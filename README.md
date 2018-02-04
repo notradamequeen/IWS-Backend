@@ -13,6 +13,6 @@ How to install locally:
 6. cd to the cloned repo
 7. run pip install -r requirements.txt
 8. run ./manage.py migrate
-9. ./manage.py runserver
+9. run ./manage.py runserver
 
 
