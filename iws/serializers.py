@@ -1,10 +1,12 @@
 from rest_framework import serializers
 from iws.models import Field, RiskType, Form
 
+
 class FieldSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     field_name = serializers.CharField(required=True, max_length=100)
     data_type = serializers.CharField(required=True, max_length=100)
+
     class Meta:
         model = Field
         fields = '__all__'
@@ -26,15 +28,15 @@ class RiskTypeSerializer(serializers.Serializer):
     def create(self, validated_data):
         return RiskType.objects.create(**validated_data)
 
+
 class FormSerializer(serializers.Serializer):
     field = FieldSerializer()
     risk_type = RiskTypeSerializer()
+
     class Meta:
         model = Form
         fields = '__all__'
         depth = 1
 
     def create(self, validated_data):
-        field = Field.objects.get(pk=validated_data['field'])
-        risk_type = RiskType.objects.get(pk=validated_data['risk_type'])
         return Form.objects.create(**validated_data)

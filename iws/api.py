@@ -1,29 +1,26 @@
 from iws.models import Field, RiskType, Form
-from iws.serializers import FieldSerializer, RiskTypeSerializer, FormSerializer
+from iws.serializers import FieldSerializer, RiskTypeSerializer
 from rest_framework import mixins
 from rest_framework import generics
-from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import JsonResponse
-# from rest_framework import ListCreateAPIView
 
 
 class RiskTypeList(generics.ListCreateAPIView):
     queryset = RiskType.objects.all()
     serializer_class = RiskTypeSerializer
 
-    def get_serializer(self, instance=None, data=None, many=False, partial=False):
+    def get_serializer(self,instance=None, data=None, many=False, partial=False):
         if self.request.method == 'POST':
             return super(RiskTypeList, self).get_serializer(instance=instance, data=data, many=True, partial=partial)
-        return super(RiskTypeList, self).get_serializer(*args, **kwargs)
+        return super(RiskTypeList, self).get_serializer()
 
     def list(self, request):
         # Note the use of `get_queryset()` instead of `self.queryset`
         queryset = self.get_queryset()
         serializer = RiskTypeSerializer(queryset, many=True)
         return Response(serializer.data)
-        
+
     def perform_create(self, serializer):
         serializer = RiskTypeSerializer(data=self.request.data, many=True)
         if serializer.is_valid():
@@ -54,7 +51,7 @@ class FieldList(generics.ListCreateAPIView):
     def get_serializer(self, instance=None, data=None, many=False, partial=False):
         if self.request.method == 'POST':
             return super(FieldList, self).get_serializer(instance=instance, data=data, many=True, partial=partial)
-        return super(FieldList, self).get_serializer(*args, **kwargs)
+        return super(FieldList, self).get_serializer()
 
     def list(self, request):
         # Note the use of `get_queryset()` instead of `self.queryset`
@@ -97,4 +94,3 @@ class FormAPIView(APIView):
 
         if(created_form):
             return Response({"success": "success"})
-        
