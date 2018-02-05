@@ -80,8 +80,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'iws',
         'USERNAME': 'febby',
-        'PASSWORD': '1',
-        'HOST': 'localhost',
+        'PASSWORD': 'codexgigas19',
+        'HOST': 'notradbinstance.c2duinl6wt8k.ap-southeast-1.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
