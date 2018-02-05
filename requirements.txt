@@ -1,3 +1,6 @@
+--allow-external ExternalPackage
+--allow-unverified ExternalPackage
+ExternalPackage
 appnope==0.1.0
 astroid==1.6.1
 awscli==1.14.32
