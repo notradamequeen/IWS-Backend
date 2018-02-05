@@ -25,7 +25,7 @@ SECRET_KEY = 'pko-vh6!6(z0p@oz3)cj65+7n=*p=@abzo5n%k7&_m-oo#k#ns'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['iws-backend-dev.us-east-1.elasticbeanstalk.com', ]
 
 
 # Application definition
